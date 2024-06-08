@@ -16,19 +16,26 @@ void draw() {
     for (int x = 1; x < width; x += 20) {
         for (int y = 1; y < height; y += 10) {
             color c;
-            float r = 10;
-            if ((x >= 120 && x <= 470) && (y >= 90))
+            float r;
+            if ((x >= 120 && x <= 470) && (y >= 80))
             {
+                //被写体
+                r = 10;
                 c = img.get(x - 10, y);
                 fill(c);
                 ellipse(x - 10, y, r, r);
+                c = img.get(x, y);
+                fill(c);
+                ellipse(x + random(-3, 3), y + random(-3, 3), r, r);
             }
             else {
+                //背景
+                r = random(0, 25);
                 y += 10;
+                c = img.get(x, y);
+                fill(c);
+                ellipse(x + random(-5, 5), y + random(-5, 5), r, r);
             }
-            c = img.get(x, y);
-            fill(c);
-            ellipse(x, y, r, r);
         }
     }
     noLoop();
